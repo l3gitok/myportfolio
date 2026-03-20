@@ -14,7 +14,11 @@ export class ContactService {
     const supabaseUrl = this.configService.get<string>('SUPABASE_URL');
     const supabaseKey = this.configService.get<string>('SUPABASE_SERVICE_ROLE_KEY');
     const resendApiKey = this.configService.get<string>('RESEND_API_KEY');
-    this.ownerEmail = this.configService.get<string>('OWNER_EMAIL') || 'tuannd.ptit.work@gmail.com';
+    this.ownerEmail = this.configService.get<string>('OWNER_EMAIL');
+
+    if (!supabaseUrl || !supabaseKey || !resendApiKey || !this.ownerEmail) {
+      throw new Error('❌ Missing required environment variables: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, or OWNER_EMAIL');
+    }
 
     this.supabase = createClient(supabaseUrl, supabaseKey);
     this.resend = new Resend(resendApiKey);

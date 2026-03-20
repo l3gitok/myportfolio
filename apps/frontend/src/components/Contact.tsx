@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [lastSubmit, setLastSubmit] = useState(0);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,6 +15,23 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Honeypot check
+    if (honeypot) {
+      console.warn('Bot detected via honeypot');
+      setStatus('success'); // Silent fail for bots
+      return;
+    }
+
+    // 2. Client-side throttling (5 seconds)
+    const now = Date.now();
+    if (now - lastSubmit < 5000) {
+      setErrorMsg('Please wait a few seconds before sending another message.');
+      setStatus('error');
+      return;
+    }
+
+    setLastSubmit(now);
     setStatus('loading');
     setErrorMsg('');
     try {
@@ -24,7 +43,7 @@ export default function Contact() {
       });
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.message || 'Failed to send message');
+        throw new Error(Array.isArray(data.message) ? data.message.join(', ') : data.message || 'Failed to send message');
       }
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
@@ -59,6 +78,17 @@ export default function Contact() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Honeypot field (hidden from users) */}
+            <div className="hidden" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="font-label text-[10px] uppercase text-on-surface-variant">IDENTIFIER (NAME)</label>

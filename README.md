@@ -2,12 +2,15 @@
 
 Welcome to the **ARCHITECT_CONSOLE** repository, a comprehensive DevOps & Cloud Engineering portfolio showcasing infrastructure design, scalable applications, and CI/CD pipelines.
 
+> [!TIP]
+> **Check out the [Architecture Decisions & Case Study](docs/architecture-decisions.md)** to understand the "Why" behind the "How".
+
 ## 🚀 Tech Stack
 
 This repository is built as a monorepo containing a full-stack application and its supporting infrastructure.
 
 ### Frontend (`apps/frontend`)
-- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Testing:** [Playwright](https://playwright.dev/) for End-to-End (E2E) testing
 - **Optimizations:** `next/image` for dynamic image resolving and integrated OpenGraph/Twitter SEO tags.
