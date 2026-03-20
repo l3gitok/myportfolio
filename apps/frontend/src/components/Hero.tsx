@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -7,39 +6,50 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 gap-12 items-center w-full">
         <div className="order-2 md:order-1">
           <div className="font-label text-primary mb-4 flex items-center gap-2">
-            <span>[system.init]</span>
+            <span>[system.init] // ready</span>
             <div className="h-[1px] w-12 bg-outline-variant/30"></div>
           </div>
-          <h1
-            className="font-headline text-6xl md:text-8xl font-bold tracking-tighter text-on-surface leading-none mb-6">
-            BUILDING <br /> <span className="text-primary-fixed-dim">RESILIENT</span> <br /> CLOUD_INFRA
+          <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter text-on-surface leading-none mb-6">
+            NGUYEN <br /> <span className="text-primary-fixed-dim">DUC</span> <br /> TUAN
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-md mb-8 leading-relaxed">
-            DevOps Architect specializing in high-availability AWS ecosystems and automated deployment
-            pipelines. Optimizing latency, securing nodes, and scaling the future.
+          <p className="text-base text-on-surface-variant max-w-md mb-3 leading-relaxed">
+            Aspiring <span className="text-primary font-semibold">DevOps & Cloud Engineer</span> | Student
           </p>
-          <div className="flex gap-4">
-            <button
+          <p className="text-sm text-on-surface-variant max-w-md mb-8 leading-relaxed">
+            Experienced in Linux, Docker, and CI/CD, with a solid foundation in Kubernetes and system design.
+            Actively seeking internship opportunities to drive innovation and scale infrastructure.
+          </p>
+          <div className="flex gap-4 flex-wrap">
+            <a href="#projects"
               className="bg-primary-container text-on-primary-container px-6 py-3 rounded font-medium hover:bg-primary transition-colors flex items-center gap-2">
-              VIEW_MANIFEST <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </button>
-            <button
+              VIEW_PROJECTS <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+            <a href="#contact"
               className="border border-outline-variant/20 text-primary px-6 py-3 rounded font-medium hover:bg-surface-container-low transition-colors">
-              DOWNLOAD_LOGS
-            </button>
+              CONTACT_ME
+            </a>
+          </div>
+          <div className="flex items-center gap-4 mt-6">
+            <a href="https://github.com/l3gitok" target="_blank" rel="noopener noreferrer"
+              className="font-label text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase flex items-center gap-1">
+              <span className="material-symbols-outlined text-sm">code</span> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/tuan-nguyen-duc/" target="_blank" rel="noopener noreferrer"
+              className="font-label text-[10px] text-on-surface-variant hover:text-secondary transition-colors uppercase flex items-center gap-1">
+              <span className="material-symbols-outlined text-sm">person</span> LinkedIn
+            </a>
           </div>
         </div>
         <div className="order-1 md:order-2 relative">
           <div
             className="aspect-square bg-surface-container-low rounded-lg overflow-hidden relative border border-outline-variant/10 shadow-2xl">
-            <img alt="Lead Cloud Engineer Portrait"
-              className="w-full h-full object-cover grayscale contrast-125 opacity-80"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM93Hd0gC27bMz04GKdNYDx4LLhBFiCoSz2UQrHxB2bflMqRRdDIxRvpHi55O9oXFw1treqsR1RC3kABKaLh3_tDkc-xKxiHhv_fROqCbuzKUEuSdDkramKl-GsjgfoArpj_YJMk2lB01P8w4DOoavXwqEhXr6wvGiMbl5bg_nnQ-V3FG292LnY-xwE-4LP6y5PCaxl06GCOjotyU_1Mw5RHmrWU7tQSpDDoohKIce5hZeaJWK7HJRPAoFjampuWaHO_c0jxKuppw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent">
-            </div>
+            <img alt="Nguyễn Đức Tuấn - DevOps & Cloud Engineer"
+              className="w-full h-full object-cover"
+              src="/avatar.png" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
             <div
               className="absolute bottom-4 left-4 font-label text-[10px] text-primary/60 bg-background/60 backdrop-blur px-2 py-1 rounded">
-              UUID: 8f2b-44e1-9c1a-0e92
+              STATUS: SEEKING_INTERNSHIP
             </div>
           </div>
           {/* Decorative Elements */}
