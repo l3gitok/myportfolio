@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ARCHITECT_CONSOLE | DevOps Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Fira+Code:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#10141a",
+                        "on-primary-container": "#653a00",
+                        "on-primary-fixed": "#2c1600",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001e2c",
+                        "outline": "#a38d7a",
+                        "on-primary": "#4a2800",
+                        "secondary-fixed-dim": "#9ccaff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#d0e4ff",
+                        "on-surface-variant": "#dbc2ad",
+                        "on-secondary-fixed-variant": "#00497a",
+                        "on-background": "#dfe2eb",
+                        "on-secondary-fixed": "#001d35",
+                        "surface-bright": "#353940",
+                        "surface-container-highest": "#31353c",
+                        "inverse-primary": "#8a5100",
+                        "outline-variant": "#554434",
+                        "on-tertiary": "#00344a",
+                        "surface-dim": "#10141a",
+                        "surface-variant": "#31353c",
+                        "on-secondary": "#003256",
+                        "tertiary-container": "#04beff",
+                        "secondary-container": "#0274bc",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "primary-fixed-dim": "#ffb86f",
+                        "primary-fixed": "#ffdcbd",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#eff4ff",
+                        "tertiary-fixed": "#c4e7ff",
+                        "tertiary": "#8ed5ff",
+                        "on-surface": "#dfe2eb",
+                        "tertiary-fixed-dim": "#7cd0ff",
+                        "inverse-surface": "#dfe2eb",
+                        "error-container": "#93000a",
+                        "secondary": "#9ccaff",
+                        "surface-tint": "#ffb86f",
+                        "primary-container": "#ff9900",
+                        "primary": "#ffc082",
+                        "on-primary-fixed-variant": "#693c00",
+                        "surface-container-low": "#181c22",
+                        "surface-container-high": "#262a31",
+                        "inverse-on-surface": "#2d3137",
+                        "surface-container": "#1c2026",
+                        "surface": "#10141a",
+                        "on-tertiary-container": "#004965",
+                        "surface-container-lowest": "#0a0e14"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Fira Code", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            scroll-behavior: smooth;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .terminal-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .glass-header {
+            background: rgba(49, 53, 60, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md">
+        <div class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <span class="font-mono font-bold text-orange-500 tracking-tighter text-lg">ARCHITECT_CONSOLE</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs text-orange-400 border-b-2 border-orange-500 pb-1"
+                    href="#hero">Hero</a>
+                <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs text-slate-400 hover:text-slate-200 transition-colors"
+                    href="#stack">Stack</a>
+                <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs text-slate-400 hover:text-slate-200 transition-colors"
+                    href="#projects">Projects</a>
+                <a class="font-['Space_Grotesk'] tracking-tight uppercase text-xs text-slate-400 hover:text-slate-200 transition-colors"
+                    href="#contact">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span
+                    class="material-symbols-outlined text-slate-400 cursor-pointer hover:bg-slate-800/50 p-2 rounded transition-all active:scale-95 duration-100"
+                    data-icon="terminal">terminal</span>
+                <span
+                    class="material-symbols-outlined text-slate-400 cursor-pointer hover:bg-slate-800/50 p-2 rounded transition-all active:scale-95 duration-100"
+                    data-icon="settings_ethernet">settings_ethernet</span>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center px-8 max-w-7xl mx-auto relative overflow-hidden" id="hero">
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <div class="order-2 md:order-1">
+                    <div class="font-label text-primary mb-4 flex items-center gap-2">
+                        <span>[system.init]</span>
+                        <div class="h-[1px] w-12 bg-outline-variant/30"></div>
+                    </div>
+                    <h1
+                        class="font-headline text-6xl md:text-8xl font-bold tracking-tighter text-on-surface leading-none mb-6">
+                        BUILDING <br /> <span class="text-primary-fixed-dim">RESILIENT</span> <br /> CLOUD_INFRA
+                    </h1>
+                    <p class="text-lg text-on-surface-variant max-w-md mb-8 leading-relaxed">
+                        DevOps Architect specializing in high-availability AWS ecosystems and automated deployment
+                        pipelines. Optimizing latency, securing nodes, and scaling the future.
+                    </p>
+                    <div class="flex gap-4">
+                        <button
+                            class="bg-primary-container text-on-primary-container px-6 py-3 rounded font-medium hover:bg-primary transition-colors flex items-center gap-2">
+                            VIEW_MANIFEST <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                        <button
+                            class="border border-outline-variant/20 text-primary px-6 py-3 rounded font-medium hover:bg-surface-container-low transition-colors">
+                            DOWNLOAD_LOGS
+                        </button>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div
+                        class="aspect-square bg-surface-container-low rounded-lg overflow-hidden relative border border-outline-variant/10 shadow-2xl">
+                        <img alt="Lead Cloud Engineer Portrait"
+                            class="w-full h-full object-cover grayscale contrast-125 opacity-80"
+                            data-alt="Professional portrait of a male engineer in dark studio lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM93Hd0gC27bMz04GKdNYDx4LLhBFiCoSz2UQrHxB2bflMqRRdDIxRvpHi55O9oXFw1treqsR1RC3kABKaLh3_tDkc-xKxiHhv_fROqCbuzKUEuSdDkramKl-GsjgfoArpj_YJMk2lB01P8w4DOoavXwqEhXr6wvGiMbl5bg_nnQ-V3FG292LnY-xwE-4LP6y5PCaxl06GCOjotyU_1Mw5RHmrWU7tQSpDDoohKIce5hZeaJWK7HJRPAoFjampuWaHO_c0jxKuppw" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 font-label text-[10px] text-primary/60 bg-background/60 backdrop-blur px-2 py-1 rounded">
+                            UUID: 8f2b-44e1-9c1a-0e92
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-primary/20"></div>
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-primary/20"></div>
+                </div>
+            </div>
+            <!-- Bottom Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+                <span class="font-label text-[10px] tracking-widest uppercase">Scroll_to_Explore</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+            </div>
+        </section>
+        <!-- Tech Stack Section -->
+        <section class="py-24 px-8 bg-surface-container-low" id="stack">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                    <div>
+                        <div class="font-label text-secondary mb-2">$ cat /etc/infrastructure_manifest</div>
+                        <h2 class="font-headline text-4xl font-bold tracking-tight uppercase">Core_Orchestration</h2>
+                    </div>
+                    <div class="text-right font-label text-xs text-on-surface-variant opacity-60">
+                        LATENCY: 12ms <br />
+                        UPTIME: 99.99%
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1: Compute -->
+                    <div class="space-y-6">
+                        <div
+                            class="bg-surface-container-lowest p-6 rounded border border-outline-variant/10 hover:border-primary/30 transition-all group">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary" data-icon="cloud">cloud</span>
+                                <h3 class="font-headline font-bold uppercase tracking-tight">Compute_Layer</h3>
+                            </div>
+                            <ul class="space-y-4 font-label text-sm text-on-surface-variant">
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>AWS_EC2 / LAMBDA</span>
+                                    <span class="text-primary">DEPLOYED</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>KUBERNETES_EKS</span>
+                                    <span class="text-primary">DEPLOYED</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>DOCKER_RUNTIME</span>
+                                    <span class="text-primary">DEPLOYED</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Column 2: Data -->
+                    <div class="space-y-6">
+                        <div
+                            class="bg-surface-container-lowest p-6 rounded border border-outline-variant/10 hover:border-secondary/30 transition-all group">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-secondary"
+                                    data-icon="database">database</span>
+                                <h3 class="font-headline font-bold uppercase tracking-tight">Storage_Persistence</h3>
+                            </div>
+                            <ul class="space-y-4 font-label text-sm text-on-surface-variant">
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>POSTGRES_RDS</span>
+                                    <span class="text-secondary">SYNCED</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>REDIS_CACHE</span>
+                                    <span class="text-secondary">SYNCED</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>AWS_S3_GLACIER</span>
+                                    <span class="text-secondary">SYNCED</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Column 3: CI/CD -->
+                    <div class="space-y-6">
+                        <div
+                            class="bg-surface-container-lowest p-6 rounded border border-outline-variant/10 hover:border-tertiary/30 transition-all group">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-tertiary"
+                                    data-icon="alt_route">alt_route</span>
+                                <h3 class="font-headline font-bold uppercase tracking-tight">CI_CD_Automation</h3>
+                            </div>
+                            <ul class="space-y-4 font-label text-sm text-on-surface-variant">
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>TERRAFORM_IAC</span>
+                                    <span class="text-tertiary">STABLE</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>GITHUB_ACTIONS</span>
+                                    <span class="text-tertiary">STABLE</span>
+                                </li>
+                                <li class="flex justify-between border-b border-outline-variant/5 pb-2">
+                                    <span>ARGOCD_GIT_OPS</span>
+                                    <span class="text-tertiary">STABLE</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Side Projects Section -->
+        <section class="py-24 px-8 max-w-7xl mx-auto" id="projects">
+            <div class="flex items-center gap-6 mb-16">
+                <h2 class="font-headline text-5xl font-bold tracking-tighter uppercase terminal-cursor">System_Nodes
+                </h2>
+                <div class="flex-grow h-[1px] bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Project Card 1 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-primary/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <div class="font-label text-[10px] text-on-surface-variant/40 mb-1">NODE_01</div>
+                                <h3 class="font-headline text-2xl font-bold text-primary">SKYNET_V3</h3>
+                            </div>
+                            <span class="material-symbols-outlined text-primary/50" data-icon="hub">hub</span>
+                        </div>
+                        <p class="text-on-surface-variant mb-8 leading-relaxed">
+                            Auto-scaling serverless architecture for processing 1M+ websocket connections per second
+                            with sub-50ms latency using AWS Lambda and Kinesis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">GO</span>
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">GRPC</span>
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">TERRAFORM</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a class="font-label text-xs flex items-center gap-1 hover:text-primary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined text-sm" data-icon="code">code</span> SOURCE
+                            </a>
+                            <a class="font-label text-xs flex items-center gap-1 hover:text-primary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined text-sm"
+                                    data-icon="open_in_new">open_in_new</span> DEPLOY
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-secondary/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <div class="font-label text-[10px] text-on-surface-variant/40 mb-1">NODE_02</div>
+                                <h3 class="font-headline text-2xl font-bold text-secondary">SENTINEL_SHIELD</h3>
+                            </div>
+                            <span class="material-symbols-outlined text-secondary/50"
+                                data-icon="security">security</span>
+                        </div>
+                        <p class="text-on-surface-variant mb-8 leading-relaxed">
+                            Real-time threat detection engine utilizing eBPF and Falco to monitor container syscalls and
+                            automatically isolate compromised pods.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">EBPF</span>
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">PYTHON</span>
+                            <span
+                                class="font-label text-[10px] px-2 py-1 bg-surface-container-high border border-outline-variant/20 rounded">KUBERNETES</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a class="font-label text-xs flex items-center gap-1 hover:text-secondary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined text-sm" data-icon="code">code</span> SOURCE
+                            </a>
+                            <a class="font-label text-xs flex items-center gap-1 hover:text-secondary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined text-sm"
+                                    data-icon="open_in_new">open_in_new</span> DOCUMENTATION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="py-24 px-8 bg-surface-container-lowest" id="contact">
+            <div class="max-w-4xl mx-auto">
+                <div
+                    class="bg-surface-container-highest rounded-t-lg flex items-center justify-between px-4 py-2 border-b border-outline-variant/20">
+                    <div class="flex gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                    </div>
+                    <span
+                        class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">session://contact_portal</span>
+                    <div class="w-12"></div>
+                </div>
+                <div class="bg-surface-container-low p-8 rounded-b-lg border-x border-b border-outline-variant/20">
+                    <div class="mb-8">
+                        <div class="font-label text-sm text-primary mb-2">Architect@remote-shell:~$ ./send_message.sh
+                        </div>
+                        <h2 class="font-headline text-3xl font-bold tracking-tight">INITIALIZE_COMMUNICATION</h2>
+                    </div>
+                    <form action="#" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="font-label text-[10px] uppercase text-on-surface-variant">IDENTIFIER
+                                    (NAME)</label>
+                                <input
+                                    class="w-full bg-background border border-outline-variant/20 rounded p-3 text-sm focus:outline-none focus:border-primary transition-colors font-label"
+                                    placeholder="guest_user" type="text" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-label text-[10px] uppercase text-on-surface-variant">CALLBACK_URI
+                                    (EMAIL)</label>
+                                <input
+                                    class="w-full bg-background border border-outline-variant/20 rounded p-3 text-sm focus:outline-none focus:border-primary transition-colors font-label"
+                                    placeholder="user@domain.com" type="email" />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label text-[10px] uppercase text-on-surface-variant">DATA_PAYLOAD
+                                (MESSAGE)</label>
+                            <textarea
+                                class="w-full bg-background border border-outline-variant/20 rounded p-3 text-sm focus:outline-none focus:border-primary transition-colors font-label resize-none"
+                                placeholder="Enter message payload here..." rows="4"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary-container text-on-primary-container font-headline font-bold uppercase py-4 rounded tracking-widest hover:bg-primary transition-colors flex items-center justify-center gap-3"
+                            type="submit">
+                            EXECUTE_SEND <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </form>
+                    <div
+                        class="mt-12 pt-8 border-t border-outline-variant/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <a class="font-label text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase"
+                            href="#">GITHUB</a>
+                        <a class="font-label text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase"
+                            href="#">LINKEDIN</a>
+                        <a class="font-label text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase"
+                            href="#">TWITTER</a>
+                        <a class="font-label text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase"
+                            href="#">DOCKERHUB</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-800/30 bg-slate-950">
+        <div class="flex flex-col md:flex-row justify-between items-center px-8 py-4 w-full">
+            <div class="text-orange-500 font-bold font-mono text-[10px] uppercase tracking-widest mb-4 md:mb-0">
+                © 2024 DEPLOY_READY
+            </div>
+            <div class="flex gap-6">
+                <span
+                    class="font-mono text-[10px] uppercase tracking-widest text-slate-500 hover:text-orange-300 transition-colors cursor-default">branch:
+                    main</span>
+                <span
+                    class="font-mono text-[10px] uppercase tracking-widest text-slate-500 hover:text-orange-300 transition-colors cursor-default">env:
+                    production</span>
+                <span
+                    class="font-mono text-[10px] uppercase tracking-widest text-slate-500 hover:text-orange-300 transition-colors cursor-default">uptime:
+                    99.9%</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
