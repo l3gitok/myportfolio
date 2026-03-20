@@ -7,13 +7,13 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' })
 
 export const metadata = {
-  title: 'ARCHITECT_CONSOLE | DevOps Portfolio',
+  title: 'DevOps Portfolio',
   description: 'DevOps Architect Portfolio',
   openGraph: {
-    title: 'ARCHITECT_CONSOLE | DevOps Portfolio',
+    title: 'DevOps Portfolio',
     description: 'DevOps Architect Portfolio - Nguyễn Đức Tuấn - Cloud & DevOps Engineer',
     url: 'https://github.com/l3gitok',
-    siteName: 'ARCHITECT_CONSOLE',
+    siteName: 'DevOps Portfolio',
     images: [
       {
         url: '/avatar.png',
