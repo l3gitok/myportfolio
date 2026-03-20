@@ -11,19 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Install dependencies
+          cache: 'npm'
+          cache-dependency-path: |
+            apps/frontend/package-lock.json
+            apps/backend/package-lock.json
+
+      - name: Install Backend dependencies
+        working-directory: apps/backend
+        run: npm install
+
+      - name: Install Frontend dependencies
+        working-directory: apps/frontend
+        run: npm install
+
+      - name: Run Lint
         run: |
-          cd apps/frontend && npm install
-          cd ../backend && npm install
-      - name: Run lint
+          npm run lint --prefix apps/backend
+          npm run lint --prefix apps/frontend
+
+      - name: Build Applications
         run: |
-          cd apps/frontend && npm run lint
-          cd ../backend && npm run lint
-      - name: Build
-        run: |
-          cd apps/frontend && npm run build
-          cd ../backend && npm run build
+          npm run build --prefix apps/backend
+          npm run build --prefix apps/frontend
+
+      - name: Verify Docker Build
+        run: docker compose build

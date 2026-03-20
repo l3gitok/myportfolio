@@ -12,4 +12,4 @@ import { ContactModule } from './modules/contact/contact.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
