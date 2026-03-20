@@ -1,0 +1,15 @@
+.env
+.env.*
+node_modules
+**/node_modules
+dist
+**/dist
+.next
+**/.next
+.git
+.github
+Dockerfile
+docker-compose*.yml
+test-supabase.js
+test-connection.js
+*.md
