@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -7,37 +7,50 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js v20
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
           cache-dependency-path: |
             apps/frontend/package-lock.json
             apps/backend/package-lock.json
 
-      - name: Install Backend dependencies
+      - name: Install Backend Environment
         working-directory: apps/backend
-        run: npm install
+        run: npm ci
 
-      - name: Install Frontend dependencies
+      - name: Install Frontend Environment
         working-directory: apps/frontend
-        run: npm install
+        run: npm ci
 
-      - name: Run Lint
+      - name: Run Code Linters
         run: |
           npm run lint --prefix apps/backend
           npm run lint --prefix apps/frontend
+
+      - name: Run Backend Unit Tests (Jest)
+        working-directory: apps/backend
+        run: npm run test
+
+      - name: Install Playwright Browsers (Frontend)
+        working-directory: apps/frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Frontend E2E Tests (Playwright)
+        working-directory: apps/frontend
+        run: npm run test:e2e
 
       - name: Build Applications
         run: |
           npm run build --prefix apps/backend
           npm run build --prefix apps/frontend
 
-      - name: Verify Docker Build
+      - name: Verify Docker Compose Build
         run: docker compose build
