@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -43,9 +44,14 @@ export default function Hero() {
         <div className="order-1 md:order-2 relative">
           <div
             className="aspect-square bg-surface-container-low rounded-lg overflow-hidden relative border border-outline-variant/10 shadow-2xl">
-            <img alt="Nguyễn Đức Tuấn - DevOps & Cloud Engineer"
-              className="w-full h-full object-cover"
-              src="/avatar.png" />
+            <Image 
+              alt="Nguyễn Đức Tuấn - DevOps & Cloud Engineer"
+              className="object-cover"
+              src="/avatar.png" 
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
             <div
               className="absolute bottom-4 left-4 font-label text-[10px] text-primary/60 bg-background/60 backdrop-blur px-2 py-1 rounded">
