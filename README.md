@@ -23,7 +23,7 @@ This repository is built as a monorepo containing a full-stack application and i
 ## 🛠️ Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
+- Node.js (v20+)
 - Docker & Docker Compose (for local database/services if applicable)
 - npm or yarn
 
