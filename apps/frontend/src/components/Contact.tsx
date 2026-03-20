@@ -96,7 +96,7 @@ export default function Contact() {
             {status === 'success' && (
               <div className="font-label text-xs text-green-400 bg-green-400/10 border border-green-400/20 rounded p-3 flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">check_circle</span>
-                MESSAGE_TRANSMITTED // You'll receive a reply at your email soon.
+                MESSAGE_TRANSMITTED // You&apos;ll receive a reply at your email soon.
               </div>
             )}
             {status === 'error' && (
