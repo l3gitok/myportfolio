@@ -5,7 +5,7 @@ Welcome to the **ARCHITECT_CONSOLE** repository, a comprehensive DevOps & Cloud 
 > [!TIP]
 > **Check out the [Architecture Decisions & Case Study](docs/architecture-decisions.md)** to understand the "Why" behind the "How".
 
-## 🚀 Tech Stack
+## Tech Stack
 
 This repository is built as a monorepo containing a full-stack application and its supporting infrastructure.
 
@@ -23,7 +23,7 @@ This repository is built as a monorepo containing a full-stack application and i
 ### Infrastructure
 - **Containerization:** Docker & Docker Compose (`docker-compose.yml`)
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v20+)
@@ -57,7 +57,7 @@ cd apps/frontend
 npm run dev
 ```
 
-### 🧪 Testing
+### Testing
 Both applications feature modern testing suites.
 
 **Backend Unit Tests:**
@@ -73,7 +73,7 @@ cd apps/frontend
 npx playwright test
 ```
 
-## 📈 SEO & Analytics
+## SEO & Analytics
 The application is pre-configured with Google Analytics (`gtag.js`). To enable tracking in production, provide the `NEXT_PUBLIC_GA_ID` environment variable.
 
 ---
