@@ -1,9 +1,9 @@
 # Case Study: ARCHITECT_CONSOLE Architecture
 
-## 🎯 Project Overview
+##  Project Overview
 This portfolio is designed to showcase not just code, but **Engineering Decisions**. The goal was to build a secure, scalable, and observable system using modern cloud-native patterns.
 
-## 🏗️ Technical Decisions
+##  Technical Decisions
 
 ### 1. Why NestJS?
 - **Modularity**: NestJS's module-based architecture allows for a clean separation of concerns (e.g., `ContactModule`).
@@ -24,7 +24,7 @@ This portfolio is designed to showcase not just code, but **Engineering Decision
 - **Modern API**: Clean, developer-friendly SDK compared to older SMTP-based solutions.
 - **Reliability**: High delivery rates and easy tracking.
 
-## 🌉 Deployment & CI/CD Flow
+##  Deployment & CI/CD Flow
 The project uses a complete automated pipeline:
 1. **Linting & Formatting**: Ensures code quality across the monorepo.
 2. **Security Scanning**: `npm audit` integrated into the CI to detect vulnerable dependencies.
@@ -33,12 +33,12 @@ The project uses a complete automated pipeline:
    - **Frontend**: Playwright for E2E flows (simulating real user interactions).
 4. **Containerization**: Docker Compose for consistent local development and production-ready images.
 
-## 🛡️ Security Hardening
+##  Security Hardening
 - **Rate Limiting**: Throttling requests to prevent brute-force/DOS attacks on the contact API.
 - **Validation**: Strict DTO validation using `class-validator`.
 - **Honeypot**: Client-side field to trap simple spam bots.
 - **Environment Isolation**: Secure management of secrets via GitHub Secrets.
 
-## 📊 Observability
+##  Observability
 - **Structured Logging**: Using Pino for machine-readable logs.
 - **Tracing**: Request-ID assigned to every incoming contact request for easy debugging.
