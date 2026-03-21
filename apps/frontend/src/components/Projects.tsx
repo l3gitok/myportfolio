@@ -2,19 +2,19 @@ import React from 'react';
 
 export default function Projects() {
   return (
-    <section className="py-24 px-8 max-w-7xl mx-auto" id="projects">
+    <section className="py-24 px-8 max-w-7xl mx-auto section-blend" id="projects">
       <div className="flex items-center gap-6 mb-16">
         <h2 className="font-headline text-5xl font-bold tracking-tighter uppercase terminal-cursor">Featured_Projects
         </h2>
         <div className="flex-grow h-[1px] bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Project Card 1 - CKCNNT */}
         <div className="relative group">
           <div
-            className="absolute -inset-2 bg-gradient-to-r from-primary/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity blur-xl">
           </div>
-          <div className="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden">
+          <div className="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden hover-glow">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <div className="font-label text-[10px] text-on-surface-variant/40 mb-1">PROJECT_01</div>
@@ -47,9 +47,9 @@ export default function Projects() {
         {/* Project Card 2 - This Portfolio */}
         <div className="relative group">
           <div
-            className="absolute -inset-2 bg-gradient-to-r from-secondary/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            className="absolute -inset-2 bg-gradient-to-r from-secondary/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity blur-xl">
           </div>
-          <div className="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden">
+          <div className="relative bg-surface p-8 rounded border border-outline-variant/10 overflow-hidden hover-glow-secondary">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <div className="font-label text-[10px] text-on-surface-variant/40 mb-1">PROJECT_02</div>

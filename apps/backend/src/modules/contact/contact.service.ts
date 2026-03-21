@@ -25,39 +25,53 @@ export class ContactService {
   }
 
   async create(dto: CreateContactDto) {
-    // 1. Save to Supabase
-    const { error } = await this.supabase
-      .from('contact_messages')
-      .insert([{ name: dto.name, email: dto.email, message: dto.message }]);
+    // 1. Save to Supabase (Non-blocking)
+    try {
+      const { error } = await this.supabase
+        .from('contact_messages')
+        .insert([{ name: dto.name, email: dto.email, message: dto.message }]);
 
-    if (error) {
-      throw new InternalServerErrorException('Failed to save message: ' + error.message);
+      if (error) {
+        console.error('❌ Supabase save failed:', error.message);
+      } else {
+        console.log('✅ Message saved to Supabase');
+      }
+    } catch (err: any) {
+      console.error('❌ Supabase error:', err.message);
     }
 
     // 2. Send email notification via Resend
-    const { error: emailError } = await this.resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: [this.ownerEmail],
-      replyTo: dto.email,
-      subject: `[Portfolio] New message from ${dto.name}`,
-      html: `
-        <div style="font-family: monospace; background: #10141a; color: #dfe2eb; padding: 24px; border-radius: 8px;">
-          <h2 style="color: #ffc082; margin-top: 0;">[PORTFOLIO] New Contact Message</h2>
-          <p><strong style="color: #9ccaff;">FROM:</strong> ${dto.name} &lt;${dto.email}&gt;</p>
-          <hr style="border: 1px solid #554434; margin: 16px 0;" />
-          <p><strong style="color: #9ccaff;">MESSAGE:</strong></p>
-          <p style="white-space: pre-wrap;">${dto.message}</p>
-          <hr style="border: 1px solid #554434; margin: 16px 0;" />
-          <p style="font-size: 11px; color: #dbc2ad; opacity: 0.6;">Sent from Portfolio Contact Form</p>
-        </div>
-      `,
-    });
+    try {
+      const { data, error: emailError } = await this.resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: [this.ownerEmail],
+        replyTo: dto.email,
+        subject: `[Portfolio] New message from ${dto.name}`,
+        html: `
+          <div style="font-family: monospace; background: #10141a; color: #dfe2eb; padding: 24px; border-radius: 8px;">
+            <h2 style="color: #ffc082; margin-top: 0;">[PORTFOLIO] New Contact Message</h2>
+            <p><strong style="color: #9ccaff;">FROM:</strong> ${dto.name} &lt;${dto.email}&gt;</p>
+            <hr style="border: 1px solid #554434; margin: 16px 0;" />
+            <p><strong style="color: #9ccaff;">MESSAGE:</strong></p>
+            <p style="white-space: pre-wrap;">${dto.message}</p>
+            <hr style="border: 1px solid #554434; margin: 16px 0;" />
+            <p style="font-size: 11px; color: #dbc2ad; opacity: 0.6;">Sent from Portfolio Contact Form</p>
+          </div>
+        `,
+      });
 
-    if (emailError) {
-      console.error('Email send failed:', emailError);
-      // Don't throw - message is already saved in DB
+      if (emailError) {
+        console.error('❌ Email send failed:', emailError);
+        throw new InternalServerErrorException('Message received but failed to send email notification.');
+      }
+      
+      console.log('✅ Email sent successfully:', data?.id);
+    } catch (err: any) {
+      if (err instanceof InternalServerErrorException) throw err;
+      console.error('❌ Resend error:', err.message);
+      throw new InternalServerErrorException('Failed to process message submission.');
     }
 
-    return { success: true, message: 'Message received!' };
+    return { success: true, message: 'Message received! I will get back to you soon.' };
   }
 }

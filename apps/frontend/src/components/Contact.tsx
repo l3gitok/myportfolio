@@ -54,8 +54,8 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 px-8 bg-surface-container-lowest" id="contact">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-24 px-8 bg-surface-container-lowest section-blend" id="contact">
+      <div className="max-w-4xl mx-auto group">
         {/* Terminal window title bar */}
         <div
           className="bg-surface-container-highest rounded-t-lg flex items-center justify-between px-4 py-2 border-b border-outline-variant/20">
